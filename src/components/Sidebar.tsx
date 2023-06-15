@@ -49,8 +49,8 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
       ModalProps={{ keepMounted: true }}
       sx={{
         '& .MuiDrawer-paper': {
-          background: theme.palette.info.main,
-          color: "primary",
+          color: theme.palette.info.main,
+          background: "primary",
           top: '64px', // Height of AppBar
           left: 0,
           width: '240px'

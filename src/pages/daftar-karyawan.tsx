@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Typography, Paper, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
+import { Container, Typography, Paper, Table, TableHead, TableRow, TableCell, TableBody, Button } from '@mui/material';
 import { Pagination } from '@mui/lab';
+import DeleteIcon from '@mui/icons-material/Delete';
 import Layout from '@/components/Layout';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
-import { semuaKaryawan } from '@/services/KaryawanApi';
+import { semuaKaryawan, hapusKaryawan } from '@/services/KaryawanApi';
 
 interface UserProfile {
   nama: string;
@@ -19,6 +20,13 @@ function DaftarKaryawan() {
   const data = useSelector((state: any) => state.data.data)
   const router = useRouter()
   const user: UserProfile = data;
+
+
+  const handleRemove = (email: string) => {
+    hapusKaryawan(email);
+    ambilData();
+    console.log(email);
+  }
 
   const ambilData = async () => {
     try {
@@ -56,6 +64,7 @@ function DaftarKaryawan() {
                 <TableCell>Nama</TableCell>
                 <TableCell>Email</TableCell>
                 <TableCell>Peran</TableCell>
+                <TableCell>Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -64,6 +73,7 @@ function DaftarKaryawan() {
                   <TableCell>{Karyawan.email}</TableCell>
                   <TableCell>{Karyawan.nama}</TableCell>
                   <TableCell>{Karyawan.peran}</TableCell>
+                  <TableCell><Button onClick={() => handleRemove(Karyawan.email)} variant='text'><DeleteIcon /></Button></TableCell>
                 </TableRow>
               )
               )}

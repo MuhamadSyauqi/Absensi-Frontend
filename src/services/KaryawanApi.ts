@@ -60,7 +60,25 @@ export const semuaKaryawan = async (halaman: number = 1) => {
   });
 
   if (response.ok) {
+    // console.log(await response.json());
     return await response.json();
+  } else {
+    throw new Error(`Lis Karyawan gagal: ${response.status} ${response.statusText}`);
+  }
+}
+
+
+export const hapusKaryawan = async (email:string) => {
+  const response = await fetch(`${API_BASE_URL}/karyawan/hapus/${email}`, {
+    method: "DELETE",
+    headers: {
+      'Authorization': getToken(),
+    },
+  });
+
+  if (response.ok) {
+    console.log(await response.json());
+    // return await response.json();
   } else {
     throw new Error(`Lis Karyawan gagal: ${response.status} ${response.statusText}`);
   }
