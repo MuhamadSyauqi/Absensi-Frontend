@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Typography, Paper, Table, TableHead, TableRow, TableCell, TableBody, Button } from '@mui/material';
 import { Pagination } from '@mui/lab';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Swal from 'sweetalert2';
 import Layout from '@/components/Layout';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
@@ -23,9 +24,30 @@ function DaftarKaryawan() {
 
 
   const handleRemove = (email: string) => {
-    hapusKaryawan(email);
-    ambilData();
-    console.log(email);
+    Swal.fire({
+      title: 'Apakah Anda Yakin?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+      showLoaderOnConfirm: true,
+      preConfirm: () => {
+        return hapusKaryawan(email);
+      },
+      allowOutsideClick: () => !Swal.isLoading()
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Deleted!',
+            'Berhasil Menghapus Data!.',
+            'success'
+          )
+          ambilData();
+        }
+      })
+
   }
 
   const ambilData = async () => {
