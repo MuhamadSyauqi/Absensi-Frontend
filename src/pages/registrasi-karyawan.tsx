@@ -59,7 +59,7 @@ function RegistrasiKaryawan() {
   return (
     <Layout>
       <Container maxWidth="xs">
-        <Typography variant="h4" align="center">Registrasi Pegawai</Typography>
+        <Typography variant="h4" align="center">Registrasi Karyawan</Typography>
         <form onSubmit={handleSubmit}>
           <TextField
             label="Nama"

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { Button, TextField, Container, Typography, Box, Alert, Snackbar, CircularProgress } from '@mui/material';
 import { loginApi, profil } from '@/services/KaryawanApi';
 import { useSelector, useDispatch } from 'react-redux';
 import { setData } from '@/services/store';
 import { useRouter } from 'next/router';
 import { getToken, setToken } from '@/services/configService';
+
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -87,6 +89,9 @@ function LoginPage() {
       justifyContent="center"
       height="100vh">
       <Container maxWidth="xs">
+      <Box sx={{ display:'flex',justifyContent: 'center',alignItems:'center'}}>
+        <Image src="/images/logo-transparent.png" alt="logo pt aloha snack" width={200} height={200}/>
+      </Box>  
         <Typography variant="h4" align="center">Login</Typography>
         <form onSubmit={handleSubmit}>
           <TextField

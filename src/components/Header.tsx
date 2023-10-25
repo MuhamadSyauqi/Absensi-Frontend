@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 import CustomTheme from "./CustomTheme";
-import { AppBar, IconButton, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { AppBar, IconButton, Toolbar, Typography, useMediaQuery, useTheme,Box } from '@mui/material';
 import Sidebar from './Sidebar';
 import { Menu } from '@mui/icons-material';
 
@@ -24,12 +25,14 @@ const Header: React.FC = () => {
     <CustomTheme> 
       <AppBar position="fixed" sx={{height:'64px'}} color="primary">
         <Toolbar>
-          {isMobile && (
             <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleSidebarOpen}>
               <Menu />
             </IconButton>
-          )}
-          <Typography variant="h6">Absensi Karyawan</Typography>
+         
+          <Box sx={{ display:'flex',alignItems:'center'}}>
+            <Image src="/images/logo-transparent.png" alt="logo pt aloha snack" width={100} height={100}/>
+            <Typography variant="h6">Absensi Karyawan</Typography>
+        </Box>  
         </Toolbar>
       </AppBar>
       <Sidebar open={sidebarOpen} onClose={handleSidebarClose} />

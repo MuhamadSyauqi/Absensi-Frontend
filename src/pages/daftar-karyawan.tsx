@@ -85,7 +85,7 @@ function DaftarKaryawan() {
               <TableRow>
                 <TableCell>Nama</TableCell>
                 <TableCell>Email</TableCell>
-                <TableCell>Peran</TableCell>
+                <TableCell>peran</TableCell>
                 <TableCell>Action</TableCell>
               </TableRow>
             </TableHead>

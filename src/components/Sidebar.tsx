@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import CustomTheme from "./CustomTheme";
+import { styled } from '@mui/material/styles';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import IconButton from '@mui/material/IconButton';
 import { Drawer, List, ListItemButton, ListItemText, useMediaQuery, useTheme } from '@mui/material';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
@@ -20,11 +24,24 @@ const allMenuItems = [
   { text: 'Keluar', href: '/login?logout=true', perans: ['admin', 'karyawan'] },
 ];
 
+
+const DrawerHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+  justifyContent: 'flex-end',
+}));
+
+
 const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
   const [peran, setPeran] = useState('karyawan')
   const data = useSelector((state: any) => state.data.data)
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
+
+
 
 
   useEffect(() => {
@@ -43,9 +60,9 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
   return (
     <CustomTheme>
         <Drawer
-      variant={isDesktop ? 'permanent' : 'temporary'}
-      open={isDesktop || open}
-      onClose={onClose}
+              variant="persistent"
+              anchor="left"
+              open={open}
       ModalProps={{ keepMounted: true }}
       sx={{
         '& .MuiDrawer-paper': {
@@ -57,6 +74,11 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
         },
       }}
     >
+        <DrawerHeader>
+          <IconButton onClick={onClose}>
+            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+        </IconButton>
+        </DrawerHeader>
       <List>
         {menuItems.map((item, index) => (
           <Link href={item.href} key={`k-${index}`} passHref>

@@ -39,7 +39,7 @@ const ProfilePage: React.FC = () => {
             <strong>Email:</strong> {user.email}
           </Typography>
           <Typography variant="body1">
-            <strong>Peran:</strong> {user.peran}
+            <strong>peran:</strong> {user.peran}
           </Typography>
         </Paper>
       </Container>
