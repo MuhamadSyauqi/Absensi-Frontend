@@ -30,7 +30,7 @@ const Header: React.FC = () => {
             </IconButton>
          
           <Box sx={{ display:'flex',alignItems:'center'}}>
-            <Image src="/images/logo-transparent.png" alt="logo pt aloha snack" width={100} height={100}/>
+            <Image src="/images/logo.png" alt="logo pt arka geulima indonesia" width={70} height={70}/>
             <Typography variant="h6">Absensi Karyawan</Typography>
         </Box>  
         </Toolbar>

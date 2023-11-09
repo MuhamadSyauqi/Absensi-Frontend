@@ -90,7 +90,7 @@ function LoginPage() {
       height="100vh">
       <Container maxWidth="xs">
       <Box sx={{ display:'flex',justifyContent: 'center',alignItems:'center'}}>
-        <Image src="/images/logo-transparent.png" alt="logo pt aloha snack" width={200} height={200}/>
+        <Image src="/images/logo-transparent.png" alt="logo pt arka geulima indonesia" width={200} height={200}/>
       </Box>  
         <Typography variant="h4" align="center">Login</Typography>
         <form onSubmit={handleSubmit}>
